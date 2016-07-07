@@ -4,6 +4,13 @@ spl-linux (0.6.5.7-1ubuntu1) yakkety; urgency=medium
 
  -- Trevor Joynson <debian@trevor.joynson.io>  Tue, 28 Jun 2016 23:53:14 -0400
 
+spl-linux (0.6.5.7-0ubuntu5) yakkety; urgency=medium
+
+  * Fix dep8 splat test, should be kmem:slab_align and not slab_align in
+    the SPLAT_TESTS large memory test case (LP: #1599259)
+
+ -- Colin Ian King <colin.king@canonical.com>  Tue, 27 May 2016 19:39:22 +0100
+
 spl-linux (0.6.5.7-0ubuntu4) yakkety; urgency=medium
 
   * Remove breaks-testbed in tests/control as this purges the splat binary
