@@ -6,10 +6,10 @@ Subject: Bump ver
  debian/changelog | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: spl-linux/debian/changelog
-===================================================================
---- spl-linux.orig/debian/changelog
-+++ spl-linux/debian/changelog
+diff --git a/debian/changelog b/debian/changelog
+index e0b74b5..81716c9 100644
+--- a/debian/changelog
++++ b/debian/changelog
 @@ -1,4 +1,4 @@
 -spl-linux (0.6.5.7-1ubuntu1) yakkety; urgency=medium
 +spl-linux (0.6.5.7-0ubuntu99) yakkety; urgency=medium
