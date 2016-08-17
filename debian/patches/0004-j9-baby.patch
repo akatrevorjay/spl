@@ -1,0 +1,21 @@
+From: "Trevor Joynson (trevorj)" <github@skywww.net>
+Date: Sun, 24 Jul 2016 00:13:44 -0700
+Subject: -j9 baby
+
+---
+ debian/dkms | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/debian/dkms b/debian/dkms
+index b349ded..44e0dd6 100644
+--- a/debian/dkms
++++ b/debian/dkms
+@@ -26,7 +26,7 @@ POST_INSTALL="cp
+   ${dkms_tree}/${PACKAGE_NAME}/${PACKAGE_VERSION}/${kernelver}/${arch}/
+ "
+ REMAKE_INITRD="no"
+-MAKE[0]="make"
++MAKE[0]="make -j9"
+ BUILT_MODULE_NAME[0]="spl"
+ BUILT_MODULE_LOCATION[0]="module/spl/"
+ DEST_MODULE_LOCATION[0]="/extra/spl/spl"
