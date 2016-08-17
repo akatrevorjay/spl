@@ -1,4 +1,4 @@
-spl-linux (0.6.5.7-1ubuntu1) yakkety; urgency=medium
+spl-linux (0.6.5.7-0ubuntu99) yakkety; urgency=medium
 
   * Git pull to support 4.7.0-rc5
 
