@@ -6,10 +6,10 @@ Subject: -j9 baby
  debian/dkms | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: spl-linux/debian/dkms
-===================================================================
---- spl-linux.orig/debian/dkms
-+++ spl-linux/debian/dkms
+diff --git a/debian/dkms b/debian/dkms
+index b349ded..44e0dd6 100644
+--- a/debian/dkms
++++ b/debian/dkms
 @@ -26,7 +26,7 @@ POST_INSTALL="cp
    ${dkms_tree}/${PACKAGE_NAME}/${PACKAGE_VERSION}/${kernelver}/${arch}/
  "
