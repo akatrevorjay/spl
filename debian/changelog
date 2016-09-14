@@ -1,3 +1,9 @@
+spl-linux (0.6.99-0ubuntu1) yakkety; urgency=medium
+
+  * 0.7.0-rc1
+
+ -- Trevor Joynson <debian@trevor.joynson.io>  Tue, 13 Sep 2016 20:12:12 -0700
+
 spl-linux (0.6.5.7-0ubuntu99) yakkety; urgency=medium
 
   * Git pull to support 4.7.0-rc5
