@@ -1,8 +1,24 @@
-spl-linux (0.7.0-rc2-1~1.gbp78ecf9) UNRELEASED; urgency=medium
+spl-linux (0.7.0-rc2-1~2.gbp51cc73) UNRELEASED; urgency=medium
 
+  ** SNAPSHOT build @51cc73e69d41d412635f3e865e1a0b16d59d4ada **
+
+  [ Trevor Joynson (Debian) ]
   ** SNAPSHOT build @78ecf9f3bf664216ff7db17093bb1f14ed8881bd **
 
   * UNRELEASED
+
+  [ Tim Chase ]
+  * Use vmem_free() in dfl_free() and add dfl_alloc()
+  * Clear PF_FSTRANS over spl_filp_fallocate()
+
+  [ Chunwei Chen ]
+  * Limit number of tasks shown in taskq proc
+  * Add system_delay_taskq for long delay
+
+  [ Trevor Joynson (trevorj) ]
+  * Wooo
+
+  [ Trevor Joynson (Debian) ]
 
  -- Trevor Joynson (Debian) <debian@trevor.joynson.io>  Sat, 10 Dec 2016 15:36:17 -0800
 
