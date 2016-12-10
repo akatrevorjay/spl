@@ -1,3 +1,11 @@
+spl-linux (0.7.0-rc2-1~1.gbp78ecf9) UNRELEASED; urgency=medium
+
+  ** SNAPSHOT build @78ecf9f3bf664216ff7db17093bb1f14ed8881bd **
+
+  * UNRELEASED
+
+ -- Trevor Joynson (Debian) <debian@trevor.joynson.io>  Sat, 10 Dec 2016 15:36:17 -0800
+
 spl-linux (0.6.99-0ubuntu1) yakkety; urgency=medium
 
   * 0.7.0-rc1
