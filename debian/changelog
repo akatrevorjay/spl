@@ -1,6 +1,6 @@
-spl-linux (0.7.0-rc2-1~4.gbp8112f8) UNRELEASED; urgency=medium
+spl-linux (0.7.0-rc2-1~5.gbpef98e8) UNRELEASED; urgency=medium
 
-  ** SNAPSHOT build @8112f8f6f30480f3a5eac3bdf6c668d6aa255d34 **
+  ** SNAPSHOT build @ef98e89792a0f6910f3133730ea9807f3b6d3a4d **
 
   [ Trevor Joynson (Debian) ]
   ** SNAPSHOT build @78ecf9f3bf664216ff7db17093bb1f14ed8881bd **
@@ -28,6 +28,12 @@ spl-linux (0.7.0-rc2-1~4.gbp8112f8) UNRELEASED; urgency=medium
   [ Trevor Joynson (trevorj) ]
   * Woo
   * Update patches
+
+  [ Trevor Joynson (Debian) ]
+
+  [ Trevor Joynson (trevorj) ]
+  * Bump
+  * Add etc
 
   [ Trevor Joynson (Debian) ]
 
