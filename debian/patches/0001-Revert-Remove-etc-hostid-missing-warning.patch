@@ -13,7 +13,7 @@ Author: Tim Gardner <tim.gardner@canonical.com>
  1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/module/spl/spl-generic.c b/module/spl/spl-generic.c
-index 88a0fcc..96e8db3 100644
+index ce60963..9e28032 100644
 --- a/module/spl/spl-generic.c
 +++ b/module/spl/spl-generic.c
 @@ -524,8 +524,12 @@ hostid_read(void)
