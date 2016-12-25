@@ -8,7 +8,6 @@ gbp buildpackage \
   --git-ignore-branch \
   --git-ignore-new \
   --git-pristine-tar \
-  --git-notify \
   && :
   #--git-tag \
   #--git-sign-tags \
