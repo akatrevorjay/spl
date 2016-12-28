@@ -29,28 +29,28 @@ override_dh_auto_test:
 
 override_dh_auto_install:
 	@# Install the utilities.
-	make install DESTDIR='$(CURDIR)/debian/tmp'
-
+	$(MAKE) install DESTDIR='$(CURDIR)/debian/tmp'
+	
 	@# Create a dummy hostid file for the zfs-initramfs package.
 	@# NB: Commentary in the spl.postinst script.
 	mkdir -p '$(CURDIR)/debian/tmp/etc/'
 	/usr/bin/printf '\xFF\xFF\xFF\xFF' >'$(CURDIR)/debian/tmp/etc/hostid'
-
+	
 	@# Get a bare copy of the source code.
 	@# This creates the $(META_DISTDIR)/ tree.
-	make distdir
-
+	$(make) distdir
+	
 	# Old: Delete boilerplate to satisfy the lintian extra-license-file check.
 	# Now: Don't remove this as we want this to end up in the Ubuntu kernel
 	# source on a copy (Feb 4, 2016)
 	#rm '$(META_DISTDIR)/COPYING'
-
+	
 	@# This shunt allows DKMS to install the Module.symvers and spl_config.h
 	@# files to the ${dkms_tree} area through the POST_INSTALL directive.
 	echo '#!/bin/sh'  >'$(META_DISTDIR)/cp'
 	echo 'cp "$$@"'  >>'$(META_DISTDIR)/cp'
 	chmod 755 '$(META_DISTDIR)/cp'
-
+	
 	# Install the DKMS source.
 	mkdir -p '$(CURDIR)/debian/tmp/usr/src/'
 	mv '$(META_DISTDIR)' '$(CURDIR)/debian/tmp/usr/src/'
