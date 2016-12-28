@@ -38,7 +38,7 @@ override_dh_auto_install:
 	
 	@# Get a bare copy of the source code.
 	@# This creates the $(META_DISTDIR)/ tree.
-	$(make) distdir
+	$(MAKE) distdir
 	
 	# Old: Delete boilerplate to satisfy the lintian extra-license-file check.
 	# Now: Don't remove this as we want this to end up in the Ubuntu kernel
