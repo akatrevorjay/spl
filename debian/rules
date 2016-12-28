@@ -1,10 +1,14 @@
 #!/usr/bin/make -f
 
-NAME := $(shell awk '$$1 == "Name:" { print $$2; }' META)
-
 META_NAME := $(shell awk '$$1 == "Name:" { print $$2; }' META)
 META_VERSION := $(shell awk '$$1 == "Version:" { print $$2; }' META)
 META_DISTDIR := $(CURDIR)/$(META_NAME)-$(META_VERSION)/
+
+NAME := $(shell awk '$$1 == "Name:" { print $$2; }' META)
+VERSION := $(shell dpkg-parsechangelog \
+  | awk '$$1 == "Version:" { print $$2; }' | sed -e 's/-.*//')
+REVISION := $(shell dpkg-parsechangelog \
+  | awk '$$1 == "Version:" { print $$2; }' | sed -e 's/.*-//')
 
 %:
 	dh $@ --with autoreconf
@@ -33,23 +37,23 @@ override_dh_auto_install:
 	/usr/bin/printf '\xFF\xFF\xFF\xFF' >'$(CURDIR)/debian/tmp/etc/hostid'
 
 	@# Get a bare copy of the source code.
-	@# This creates the $(CURDIR)/$(NAME)-$(VERSION)/ tree.
+	@# This creates the $(META_DISTDIR)/ tree.
 	make distdir
 
 	# Old: Delete boilerplate to satisfy the lintian extra-license-file check.
 	# Now: Don't remove this as we want this to end up in the Ubuntu kernel
 	# source on a copy (Feb 4, 2016)
-	#rm '$(CURDIR)/$(NAME)-$(VERSION)/COPYING'
+	#rm '$(META_DISTDIR)/COPYING'
 
 	@# This shunt allows DKMS to install the Module.symvers and spl_config.h
 	@# files to the ${dkms_tree} area through the POST_INSTALL directive.
-	echo '#!/bin/sh'  >'$(CURDIR)/$(NAME)-$(VERSION)/cp'
-	echo 'cp "$$@"'  >>'$(CURDIR)/$(NAME)-$(VERSION)/cp'
-	chmod 755 '$(CURDIR)/$(NAME)-$(VERSION)/cp'
+	echo '#!/bin/sh'  >'$(META_DISTDIR)/cp'
+	echo 'cp "$$@"'  >>'$(META_DISTDIR)/cp'
+	chmod 755 '$(META_DISTDIR)/cp'
 
 	# Install the DKMS source.
 	mkdir -p '$(CURDIR)/debian/tmp/usr/src/'
-	mv '$(CURDIR)/$(NAME)-$(VERSION)' '$(CURDIR)/debian/tmp/usr/src/'
+	mv '$(META_DISTDIR)' '$(CURDIR)/debian/tmp/usr/src/'
 
 	# Install the dkms.conf file.
 	dh_dkms -V $(VERSION)
