@@ -3,12 +3,11 @@
 META_NAME := $(shell awk '$$1 == "Name:" { print $$2; }' META)
 META_VERSION := $(shell dpkg-parsechangelog \
   | awk '$$1 == "Version:" { print $$2; }' | cut -d- -f1)
-META_REVISION := $(shell dpkg-parsechangelog \
+META_RELEASE := $(shell dpkg-parsechangelog \
   | awk '$$1 == "Revision:" { print $$2; }' | cut -d- -f2-)
 META_DISTDIR := $(CURDIR)/$(META_NAME)-$(META_VERSION)/
 
 VERSION := $(META_VERSION)
-REVISION := $(META_REVISION)
 
 %:
 	dh $@ --with autoreconf,dkms
@@ -17,7 +16,7 @@ override_dh_auto_configure:
 	@# Embed the downstream version in the module.
 	@sed \
 	  -e 's/^Version:.*/Version:      $(META_VERSION)/' \
-	  -e 's/^Release:.*/Release:      $(META_REVISION)/' \
+	  -e 's/^Release:.*/Release:      $(META_RELEASE)/' \
 	  -i.orig META
 	
 	@# Build the userland, but don't build the kernel modules.
