@@ -114,7 +114,12 @@ spl_rw_lockdep_on_maybe(krwlock_t *rwp)			\
 static inline int
 RW_READ_HELD(krwlock_t *rwp)
 {
-	return (spl_rwsem_is_locked(SEM(rwp)) && rw_owner(rwp) == NULL);
+	/*
+	 * Linux 4.8 will set owner to 1 when read held instead of leave it
+	 * NULL. So we check whether owner <= 1.
+	 */
+	return (spl_rwsem_is_locked(SEM(rwp)) &&
+	    (unsigned long)rw_owner(rwp) <= 1);
 }
 
 static inline int
@@ -208,14 +213,6 @@ RW_LOCK_HELD(krwlock_t *rwp)
 	spl_rw_lockdep_on_maybe(rwp);					\
 })
 
-/*
- * This implementation of rw_tryupgrade() behaves slightly differently
- * from its counterparts on other platforms.  It drops the RW_READER lock
- * and then acquires the RW_WRITER lock leaving a small window where no
- * lock is held.  On other platforms the lock is never released during
- * the upgrade process.  This is necessary under Linux because the kernel
- * does not provide an upgrade function.
- */
 #define rw_tryupgrade(rwp)						\
 ({									\
 	int _rc_ = 0;							\
@@ -223,13 +220,10 @@ RW_LOCK_HELD(krwlock_t *rwp)
 	if (RW_WRITE_HELD(rwp)) {					\
 		_rc_ = 1;						\
 	} else {							\
-		rw_exit(rwp);						\
-		if (rw_tryenter(rwp, RW_WRITER)) {			\
-			_rc_ = 1;					\
-		} else {						\
-			rw_enter(rwp, RW_READER);			\
-			_rc_ = 0;					\
-		}							\
+		spl_rw_lockdep_off_maybe(rwp);				\
+		if ((_rc_ = rwsem_tryupgrade(SEM(rwp))))		\
+			spl_rw_set_owner(rwp);				\
+		spl_rw_lockdep_on_maybe(rwp);				\
 	}								\
 	_rc_;								\
 })
