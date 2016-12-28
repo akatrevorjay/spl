@@ -1,14 +1,12 @@
 #!/usr/bin/make -f
 
 META_NAME := $(shell awk '$$1 == "Name:" { print $$2; }' META)
-META_VERSION := $(shell awk '$$1 == "Version:" { print $$2; }' META)
-META_DISTDIR := $(CURDIR)/$(META_NAME)-$(META_VERSION)/
-
-NAME := $(shell awk '$$1 == "Name:" { print $$2; }' META)
+#META_VERSION := $(shell awk '$$1 == "Version:" { print $$2; }' META)
 VERSION := $(shell dpkg-parsechangelog \
   | awk '$$1 == "Version:" { print $$2; }' | sed -e 's/-.*//')
 REVISION := $(shell dpkg-parsechangelog \
   | awk '$$1 == "Version:" { print $$2; }' | sed -e 's/.*-//')
+META_DISTDIR := $(CURDIR)/$(META_NAME)-$(META_VERSION)/
 
 %:
 	dh $@ --with autoreconf
