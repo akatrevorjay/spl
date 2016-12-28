@@ -1,7 +1,6 @@
 #!/usr/bin/make -f
 
 META_NAME := $(shell awk '$$1 == "Name:" { print $$2; }' META)
-#META_VERSION := $(shell awk '$$1 == "Version:" { print $$2; }' META)
 META_VERSION := $(shell dpkg-parsechangelog \
   | awk '$$1 == "Version:" { print $$2; }' | cut -d- -f1)
 META_REVISION := $(shell dpkg-parsechangelog \
@@ -54,7 +53,7 @@ override_dh_auto_install:
 	mv '$(META_DISTDIR)' '$(CURDIR)/debian/tmp/usr/src/'
 
 	# Install the dkms.conf file.
-	dh_dkms -V $(VERSION)
+	dh_dkms -V $(META_VERSION)
 
 override_dh_auto_clean:
 	dh_auto_clean
