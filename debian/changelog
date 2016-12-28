@@ -1,6 +1,6 @@
-spl-linux (0.7.0rc2-0ubuntu1~10.gbp96c711) UNRELEASED; urgency=medium
+spl-linux (0.7.0-0ubuntu1~11.gbpae599f) UNRELEASED; urgency=medium
 
-  ** SNAPSHOT build @96c711e5dbbafd0904369c8bff86fb3f018a6e55 **
+  ** SNAPSHOT build @ae599ffb62d578cad7cadd7ae2e44ec24211103f **
 
   [ Trevor Joynson (Debian) ]
   ** SNAPSHOT build @78ecf9f3bf664216ff7db17093bb1f14ed8881bd **
@@ -86,6 +86,11 @@ spl-linux (0.7.0rc2-0ubuntu1~10.gbp96c711) UNRELEASED; urgency=medium
 
   [ Trevor Joynson (trevorj) ]
   * Bump
+
+  [ Trevor Joynson (Debian) ]
+
+  [ Trevor Joynson (trevorj) ]
+  * yay
 
   [ Trevor Joynson (Debian) ]
 
