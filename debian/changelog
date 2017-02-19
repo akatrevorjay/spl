@@ -1,4 +1,4 @@
-spl-linux (0.7.0-rc3-0ubuntu1~12.gbp72d2b1) UNRELEASED; urgency=medium
+spl-linux (0.7.0-rc3-0ubuntu1~12.gbp72d2b1~trusty0) trusty; urgency=medium
 
   ** SNAPSHOT build @72d2b1ae2548fbd42b2247e9737782119d3903f4 **
 
@@ -166,8 +166,10 @@ spl-linux (0.7.0-rc3-0ubuntu1~12.gbp72d2b1) UNRELEASED; urgency=medium
   * Update gbp conf
 
   [ Trevor Joynson (Debian) ]
+  * Rebuild for trusty
+  * Changed build-dependencies to packages available in trusty
 
- -- Trevor Joynson (Debian) <debian@trevor.joynson.io>  Sat, 10 Dec 2016 15:36:17 -0800
+ -- Trevor Joynson (Debian) <debian@trevor.joynson.io>  Sun, 19 Feb 2017 00:21:56 -0800
 
 spl-linux (0.6.99-0ubuntu1) yakkety; urgency=medium
 
