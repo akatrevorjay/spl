@@ -1,6 +1,6 @@
-spl-linux (0.7.0-rc2-0ubuntu1~11.gbpae599f) UNRELEASED; urgency=medium
+spl-linux (0.7.0-rc3-0ubuntu1~12.gbp72d2b1) UNRELEASED; urgency=medium
 
-  ** SNAPSHOT build @ae599ffb62d578cad7cadd7ae2e44ec24211103f **
+  ** SNAPSHOT build @72d2b1ae2548fbd42b2247e9737782119d3903f4 **
 
   [ Trevor Joynson (Debian) ]
   ** SNAPSHOT build @78ecf9f3bf664216ff7db17093bb1f14ed8881bd **
@@ -91,6 +91,79 @@ spl-linux (0.7.0-rc2-0ubuntu1~11.gbpae599f) UNRELEASED; urgency=medium
 
   [ Trevor Joynson (trevorj) ]
   * yay
+
+  [ Trevor Joynson (Debian) ]
+
+  [ RageLtMan ]
+  * Update struct member intializers to C89
+
+  [ Kevin Tanguy ]
+  * Add support for recent kmem_cache_create_usercopy
+
+  [ George Melikov ]
+  * Remove identical if statements in module/spl/spl-vnode.c
+
+  [ clefru ]
+  * Reimplement rt_mutex_owner to fix build with DEBUG & PREEMPT_RT_FULL
+
+  [ Brian Behlendorf ]
+  * Tag 0.7.0-rc3
+
+  [ David Quigley ]
+  * Add a PAGESHIFT definition
+
+  [ Chunwei Chen ]
+  * Use kernel slab for vn_cache and vn_file_cache
+
+  [ Trevor Joynson (trevorj) ]
+  * Import debian
+  * Update gbp conf
+  * Import changes from 0.6.5.7-0ubuntu5
+  * Patches
+  * Update
+  * Blah
+  * Up log
+  * Fix patches
+  * Grr
+  * rm
+  * rm
+  * Bump
+  * Grr
+  * Revert "Grr"
+  * Wooo
+  * Wooo
+  * Woo
+  * Update patches
+  * Bump
+  * Add etc
+  * Bump
+  * Up
+  * Up
+  * Bump
+  * Yay
+  * Yay
+  * Yay
+  * Bump
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * Update ppa script
+  * Update gbp conf
 
   [ Trevor Joynson (Debian) ]
 
