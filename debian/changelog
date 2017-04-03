@@ -1,6 +1,6 @@
-spl-linux (0.7.0-rc3-0ubuntu1~12.gbp72d2b1) UNRELEASED; urgency=medium
+spl-linux (0.7.0-rc3-0ubuntu1~13.gbp94b893) UNRELEASED; urgency=medium
 
-  ** SNAPSHOT build @72d2b1ae2548fbd42b2247e9737782119d3903f4 **
+  ** SNAPSHOT build @94b893a763c2dda97d4157476f58c5dfb80f49b7 **
 
   [ Trevor Joynson (Debian) ]
   ** SNAPSHOT build @78ecf9f3bf664216ff7db17093bb1f14ed8881bd **
@@ -164,6 +164,22 @@ spl-linux (0.7.0-rc3-0ubuntu1~12.gbp72d2b1) UNRELEASED; urgency=medium
   * yay
   * Update ppa script
   * Update gbp conf
+
+  [ Trevor Joynson (Debian) ]
+
+  [ Trevor Joynson (trevorj) ]
+  * Bump
+
+  [ Olaf Faaland ]
+  * Linux 4.11 compat: set_task_state() removed
+
+  [ Brian Behlendorf ]
+  * Fix powerpc build
+
+  [ Olaf Faaland ]
+  * Linux 4.11 compat: vfs_getattr() takes 4 args
+  * Linux 4.11 compat: add linux/sched/signal.h
+  * Linux 4.11 compat: remove stub for __put_task_struct
 
   [ Trevor Joynson (Debian) ]
 
