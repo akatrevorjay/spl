@@ -1,4 +1,4 @@
-spl-linux (0.7.0-rc3-0ubuntu1~15.gbp4cc3e7) UNRELEASED; urgency=medium
+spl-linux (0.7.0-rc3-0ubuntu1~15.gbp4cc3e7~trusty0) trusty; urgency=medium
 
   ** SNAPSHOT build @4cc3e71c3bfb4287a22979771bcb4cdbe9dc324f **
 
@@ -187,8 +187,10 @@ spl-linux (0.7.0-rc3-0ubuntu1~15.gbp4cc3e7) UNRELEASED; urgency=medium
   * Bump
 
   [ Trevor Joynson (Debian) ]
+  * Rebuild for trusty
+  * Changed build-dependencies to packages available in trusty
 
- -- Trevor Joynson (Debian) <debian@trevor.joynson.io>  Sat, 10 Dec 2016 15:36:17 -0800
+ -- Trevor Joynson (Debian) <debian@trevor.joynson.io>  Mon, 03 Apr 2017 03:10:35 -0700
 
 spl-linux (0.6.99-0ubuntu1) yakkety; urgency=medium
 
