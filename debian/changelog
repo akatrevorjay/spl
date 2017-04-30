@@ -1,4 +1,4 @@
-spl-linux (0.7.0-rc3-0ubuntu1~18.gbp40831f) UNRELEASED; urgency=medium
+spl-linux (0.7.0-rc3-0ubuntu1~18.gbp40831f~yakkety0) yakkety; urgency=medium
 
   ** SNAPSHOT build @40831f0ea4d89d5ead0d37f9f806a560d758c367 **
 
@@ -256,8 +256,10 @@ spl-linux (0.7.0-rc3-0ubuntu1~18.gbp40831f) UNRELEASED; urgency=medium
   * TRIM is merged
 
   [ Trevor Joynson (Debian) ]
+  * Rebuild for yakkety
+  * Changed build-dependencies to packages available in yakkety
 
- -- Trevor Joynson (Debian) <debian@trevor.joynson.io>  Sun, 30 Apr 2017 05:44:53 -0700
+ -- Trevor Joynson (Debian) <debian@trevor.joynson.io>  Sun, 30 Apr 2017 05:49:19 -0700
 
 spl-linux (0.6.99-0ubuntu1) yakkety; urgency=medium
 
