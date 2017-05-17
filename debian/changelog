@@ -1,4 +1,4 @@
-spl-linux (0.7.0-rc4-0ubuntu1~19.gbp77bfc8) UNRELEASED; urgency=medium
+spl-linux (0.7.0-rc4-0ubuntu1~19.gbp77bfc8~zesty0) zesty; urgency=medium
 
   ** SNAPSHOT build @77bfc894dd3e4117bc4dea116c66bf87f14fc1b0 **
 
@@ -267,8 +267,10 @@ spl-linux (0.7.0-rc4-0ubuntu1~19.gbp77bfc8) UNRELEASED; urgency=medium
   * Linux 4.12 compat: PF_FSTRANS was removed
 
   [ Trevor Joynson (Debian) ]
+  * Rebuild for zesty
+  * Changed build-dependencies to packages available in zesty
 
- -- Trevor Joynson (Debian) <debian@trevor.joynson.io>  Wed, 17 May 2017 16:35:29 -0700
+ -- Trevor Joynson (Debian) <debian@trevor.joynson.io>  Wed, 17 May 2017 16:36:32 -0700
 
 spl-linux (0.6.99-0ubuntu1) yakkety; urgency=medium
 
