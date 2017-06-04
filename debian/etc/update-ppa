@@ -97,7 +97,8 @@ fi
 
 
 do_dist() {
-    local dist="$1"
+    local dist="$1"; shift
+    local dput_args=("$@")
     local branch="$debian_prefix/$dist"
 
     local pre_version="${base_version}~${dist}"
@@ -146,15 +147,14 @@ do_dist() {
       --git-builder='debuild --preserve-envvar=CCACHE_DIR --prepend-path=/usr/lib/ccache -i -I' \
       -S -sa
 
-    dput "$PPA" "../build-area/${pkg}_${version}_source.changes" || return 1
+    dput $dput_args "$PPA" "../build-area/${pkg}_${version}_source.changes" || return 1
 
     echo "-- Tagging"
     git tag -f "${tag_version}"
 }
 
-
 for dist in "${dists[@]}"; do
-    do_dist "$dist"
+    do_dist "$dist" "$@"
 done
 
 echo "DONE"
