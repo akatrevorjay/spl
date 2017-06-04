@@ -1,4 +1,4 @@
-spl-linux (0.7.0-rc4-0ubuntu1~23.gbp1e2069) UNRELEASED; urgency=medium
+spl-linux (0.7.0-rc4-0ubuntu1~23.gbp1e2069~yakkety0) yakkety; urgency=medium
 
   ** SNAPSHOT build @1e2069db137d5a80cf4e1d0caeffe8e3c178aedd **
 
@@ -294,8 +294,10 @@ spl-linux (0.7.0-rc4-0ubuntu1~23.gbp1e2069) UNRELEASED; urgency=medium
   * Bump
 
   [ Trevor Joynson (Debian) ]
+  * Rebuild for yakkety
+  * Changed build-dependencies to packages available in yakkety
 
- -- Trevor Joynson (Debian) <debian@trevor.joynson.io>  Sat, 03 Jun 2017 22:05:49 -0700
+ -- Trevor Joynson (Debian) <debian@trevor.joynson.io>  Sat, 03 Jun 2017 22:34:20 -0700
 
 spl-linux (0.6.99-0ubuntu1) yakkety; urgency=medium
 
