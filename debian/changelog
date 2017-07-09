@@ -1,4 +1,4 @@
-spl-linux (0.7.0-rc4git0-1ubuntu2~28.gbp8bc5a3) UNRELEASED; urgency=medium
+spl-linux (0.7.0-rc4git0-1ubuntu2~28.gbp8bc5a3~artful0) artful; urgency=medium
 
   ** SNAPSHOT build @8bc5a33c7294bf9be4fff47f3a9d07c12304c1e5 **
 
@@ -390,8 +390,10 @@ spl-linux (0.7.0-rc4git0-1ubuntu2~28.gbp8bc5a3) UNRELEASED; urgency=medium
   * Bump
 
   [ Trevor Joynson (Debian) ]
+  * Rebuild for artful
+  * Changed build-dependencies to packages available in artful
 
- -- Trevor Joynson (Debian) <debian@trevor.joynson.io>  Sat, 03 Jun 2017 23:13:26 -0700
+ -- Trevor Joynson (Debian) <debian@trevor.joynson.io>  Sun, 09 Jul 2017 04:41:38 -0700
 
 spl-linux (0.6.99-0ubuntu1) yakkety; urgency=medium
 
