@@ -1,6 +1,6 @@
-spl-linux (0.7.0-rc4git0-1ubuntu2~28.gbp8bc5a3) UNRELEASED; urgency=medium
+spl-linux (0.7.0-rc4git1-1ubuntu1~30.gbpefb20a) UNRELEASED; urgency=medium
 
-  ** SNAPSHOT build @8bc5a33c7294bf9be4fff47f3a9d07c12304c1e5 **
+  ** SNAPSHOT build @efb20a87c67f207bfcd3b5c14ac5c447a84966f4 **
 
   [ Trevor Joynson (Debian) ]
   ** SNAPSHOT build @78ecf9f3bf664216ff7db17093bb1f14ed8881bd **
@@ -391,7 +391,100 @@ spl-linux (0.7.0-rc4git0-1ubuntu2~28.gbp8bc5a3) UNRELEASED; urgency=medium
 
   [ Trevor Joynson (Debian) ]
 
- -- Trevor Joynson (Debian) <debian@trevor.joynson.io>  Sat, 03 Jun 2017 23:13:26 -0700
+  [ Olaf Faaland ]
+  * glibc 2.25 compat: remove assert(X=Y)
+
+  [ Brian Behlendorf ]
+  * Tag 0.7.0-rc4
+
+  [ Chunwei Chen ]
+  * Linux 4.12 compat: PF_FSTRANS was removed
+
+  [ Brian Behlendorf ]
+  * Fix cv_timedwait timeout
+
+  [ Chunwei Chen ]
+  * Improve gitignore
+  * config: allow --with-linux without --with-linux-obj
+  * Fix RWSEM_SPINLOCK_IS_RAW check failed
+
+  [ Prakash Surya ]
+  * Add ASSERT3B/VERIFY3B/USEC2NSEC/NSEC2USEC macros
+
+  [ Brian Behlendorf ]
+  * Don't cache the system hostid
+
+  [ Trevor Joynson (trevorj) ]
+  * Import debian
+  * Update gbp conf
+  * Import changes from 0.6.5.7-0ubuntu5
+  * Patches
+  * Update
+  * Blah
+  * Up log
+  * Fix patches
+  * Grr
+  * rm
+  * rm
+  * Bump
+  * Grr
+  * Revert "Grr"
+  * Wooo
+  * Wooo
+  * Woo
+  * Update patches
+  * Bump
+  * Add etc
+  * Bump
+  * Up
+  * Up
+  * Bump
+  * Yay
+  * Yay
+  * Yay
+  * Bump
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * yay
+  * Update ppa script
+  * Update gbp conf
+  * Bump
+  * Bump
+  * Bump
+  * Update DKMS build step to match newer versions
+  * Bump
+  * Bump
+  * Bump
+  * compat 9
+  * Allow dput args
+  * Remove precise
+  * Bump
+  * Bump
+  * Add artful
+
+  [ Trevor Joynson (Debian) ]
+
+  [ Trevor Joynson (trevorj) ]
+  * Bump
+
+  [ Trevor Joynson (Debian) ]
+
+ -- Trevor Joynson (Debian) <debian@trevor.joynson.io>  Thu, 13 Jul 2017 13:35:46 -0700
 
 spl-linux (0.6.99-0ubuntu1) yakkety; urgency=medium
 
