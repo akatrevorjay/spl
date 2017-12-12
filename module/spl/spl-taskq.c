@@ -58,6 +58,14 @@ EXPORT_SYMBOL(system_delay_taskq);
 static taskq_t *dynamic_taskq;
 static taskq_thread_t *taskq_thread_create(taskq_t *);
 
+#ifndef HAVE_KERNEL_TIMER_SETUP
+#define timer_setup(_ptr, _func, _data)\
+	do {\
+		(_ptr)->function = _func;\
+		(_ptr)->data = _data;\
+	} while (0)
+#endif
+
 /* List of all taskqs */
 LIST_HEAD(tq_list);
 DECLARE_RWSEM(tq_list_sem);
@@ -206,9 +214,16 @@ task_done(taskq_t *tq, taskq_ent_t *t)
  * add it to the priority list in order for immediate processing.
  */
 static void
+#ifdef HAVE_KERNEL_TASK_EXPIRE_TIMER_LIST
+task_expire(struct timer_list *tl)
+{
+	taskq_ent_t *t = (taskq_ent_t *) from_timer(t, tl, tqent_timer);
+#else
 task_expire(unsigned long data)
 {
-	taskq_ent_t *w, *t = (taskq_ent_t *)data;
+	taskq_ent_t *t = (taskq_ent_t *)data;
+#endif
+	taskq_ent_t *w;
 	taskq_t *tq = t->tqent_taskq;
 	struct list_head *l;
 	unsigned long flags;
@@ -581,8 +596,7 @@ taskq_dispatch(taskq_t *tq, task_func_t func, void *arg, uint_t flags)
 	t->tqent_func = func;
 	t->tqent_arg = arg;
 	t->tqent_taskq = tq;
-	t->tqent_timer.data = 0;
-	t->tqent_timer.function = NULL;
+	timer_setup(&t->tqent_timer, NULL, 0);
 	t->tqent_timer.expires = 0;
 	t->tqent_birth = jiffies;
 
@@ -631,8 +645,7 @@ taskq_dispatch_delay(taskq_t *tq, task_func_t func, void *arg,
 	t->tqent_func = func;
 	t->tqent_arg = arg;
 	t->tqent_taskq = tq;
-	t->tqent_timer.data = (unsigned long)t;
-	t->tqent_timer.function = task_expire;
+	timer_setup(&t->tqent_timer, task_expire, 0);
 	t->tqent_timer.expires = (unsigned long)expire_time;
 	add_timer(&t->tqent_timer);
 
@@ -723,7 +736,7 @@ taskq_init_ent(taskq_ent_t *t)
 {
 	spin_lock_init(&t->tqent_lock);
 	init_waitqueue_head(&t->tqent_waitq);
-	init_timer(&t->tqent_timer);
+	timer_setup(&t->tqent_timer, NULL, 0);
 	INIT_LIST_HEAD(&t->tqent_list);
 	t->tqent_id = 0;
 	t->tqent_func = NULL;

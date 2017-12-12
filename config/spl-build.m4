@@ -54,6 +54,8 @@ AC_DEFUN([SPL_AC_CONFIG_KERNEL], [
 	SPL_AC_WAIT_QUEUE_HEAD_ENTRY
 	SPL_AC_KERNEL_WRITE
 	SPL_AC_KERNEL_READ
+	SPL_AC_KERNEL_TIMER_SETUP
+	SPL_AC_KERNEL_TASK_EXPIRE_TIMER_LIST
 ])
 
 AC_DEFUN([SPL_AC_MODULE_SYMVERS], [
@@ -1649,6 +1651,56 @@ AC_DEFUN([SPL_AC_KERNEL_READ], [
 		AC_MSG_RESULT(yes)
 		AC_DEFINE(HAVE_KERNEL_READ_PPOS, 1,
 		    [kernel_read() take loff_t pointer])
+	],[
+		AC_MSG_RESULT(no)
+	])
+	EXTRA_KCFLAGS="$tmp_flags"
+])
+
+dnl #
+dnl # 4.15 API change
+dnl # https://lkml.org/lkml/2017/11/25/90
+dnl # Use timer_setup() if available.
+dnl #
+AC_DEFUN([SPL_AC_KERNEL_TIMER_SETUP], [
+	AC_MSG_CHECKING([whether timer_setup() exists])
+	tmp_flags="$EXTRA_KCFLAGS"
+	EXTRA_KCFLAGS="-Werror"
+	SPL_LINUX_TRY_COMPILE([
+		#include <linux/timer.h>
+	],[
+		struct timer_list tl;
+		timer_setup(&tl, NULL, 0);
+	],[
+		AC_MSG_RESULT(yes)
+		AC_DEFINE(HAVE_KERNEL_TIMER_SETUP, 1,
+		    [use timer_setup()])
+	],[
+		AC_MSG_RESULT(no)
+	])
+	EXTRA_KCFLAGS="$tmp_flags"
+])
+
+dnl #
+dnl # 4.15 API change
+dnl # https://lkml.org/lkml/2017/11/25/90
+dnl # Pass a timer_list to task_expire()
+dnl #
+AC_DEFUN([SPL_AC_KERNEL_TASK_EXPIRE_TIMER_LIST], [
+	AC_MSG_CHECKING([whether task_expire() takes a timer_list])
+	tmp_flags="$EXTRA_KCFLAGS"
+	EXTRA_KCFLAGS="-Werror"
+	SPL_LINUX_TRY_COMPILE([
+		#include <linux/timer.h>
+	],[
+		void task_expire(struct timer_list *tl) {}
+
+		struct timer_list tl;
+		timer_setup(&tl, task_expire, 0);
+	],[
+		AC_MSG_RESULT(yes)
+		AC_DEFINE(HAVE_KERNEL_TASK_EXPIRE_TIMER_LIST, 1,
+		    [pass task_expire() a timer_list])
 	],[
 		AC_MSG_RESULT(no)
 	])
