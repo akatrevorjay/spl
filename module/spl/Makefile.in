@@ -33,6 +33,7 @@ $(MODULE)-objs += spl-mulbuf-queue.o
 $(MODULE)-objs += spl-mulbuf-queue-sha256.o
 $(MODULE)-objs += spl-mulbuf-suite-sha256.o
 #$(MODULE)-objs += spl-mulbuf-test.o
+$(MODULE)-objs += spl-lockdbg.o
 
 @CONFIG_HASH_MB_TRUE@hash_mb = 1
 ifdef hash_mb
@@ -64,4 +65,4 @@ endif
  $(product).o_shipped: DEBUG_$(AS)=    # Don't put debug symbols in the lib
  $(product).o_shipped: DEBUG=
  $(product).o_shipped: DEFINES+=-D NDEBUG
-	
+

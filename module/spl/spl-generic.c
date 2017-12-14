@@ -33,6 +33,7 @@
 #include <sys/vmem.h>
 #include <sys/mutex.h>
 #include <sys/rwlock.h>
+#include <sys/condvar.h>
 #include <sys/taskq.h>
 #include <sys/mulbuf_queue_sha256.h>
 #include <sys/tsd.h>
@@ -47,6 +48,7 @@
 #include <linux/kmod.h>
 #include <linux/math64_compat.h>
 #include <linux/proc_compat.h>
+#include <spl-lockdbg.h>
 
 char spl_version[32] = "SPL v" SPL_META_VERSION "-" SPL_META_RELEASE;
 EXPORT_SYMBOL(spl_version);
@@ -683,48 +685,53 @@ spl_init(void)
 	if ((rc = spl_rw_init()))
 		goto out3;
 
-	if ((rc = spl_tsd_init()))
+	if ((rc = spl_condvar_init()))
 		goto out4;
 
-	if ((rc = spl_taskq_init()))
+	if ((rc = spl_tsd_init()))
 		goto out5;
 
-	if ((rc = spl_kmem_cache_init()))
+	if ((rc = spl_taskq_init()))
 		goto out6;
 
-	if ((rc = spl_vn_init()))
+	if ((rc = spl_kmem_cache_init()))
 		goto out7;
 
-	if ((rc = spl_proc_init()))
+	if ((rc = spl_vn_init()))
 		goto out8;
 
-	if ((rc = spl_kstat_init()))
+	if ((rc = spl_proc_init()))
 		goto out9;
 
-	if ((rc = spl_zlib_init()))
+	if ((rc = spl_kstat_init()))
 		goto out10;
 
 	if ((rc = mulbuf_suite_sha256_init()))
 		goto out11;
 
+	if ((rc = spl_zlib_init()))
+		goto out12;
+
 	printk(KERN_NOTICE "SPL: Loaded module v%s-%s%s\n", SPL_META_VERSION,
 	       SPL_META_RELEASE, SPL_DEBUG_STR);
 	return (rc);
 
+out12:
+	spl_kstat_fini();
 out11:
 	mulbuf_suite_sha256_fini();
 out10:
-	spl_kstat_fini();
-out9:
 	spl_proc_fini();
-out8:
+out9:
 	spl_vn_fini();
-out7:
+out8:
 	spl_kmem_cache_fini();
-out6:
+out7:
 	spl_taskq_fini();
-out5:
+out6:
 	spl_tsd_fini();
+out5:
+	spl_condvar_fini();
 out4:
 	spl_rw_fini();
 out3:
@@ -752,9 +759,11 @@ spl_fini(void)
 	spl_kmem_cache_fini();
 	spl_taskq_fini();
 	spl_tsd_fini();
+	spl_condvar_fini();
 	spl_rw_fini();
 	spl_mutex_fini();
 	spl_kvmem_fini();
+	spl_lockdbg_fini();
 }
 
 module_init(spl_init);
